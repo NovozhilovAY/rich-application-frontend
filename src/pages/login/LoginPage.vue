@@ -12,6 +12,12 @@
       <p>
         <button class="btn-submit" type="submit">Login</button>
       </p>
+      <p>
+        Не зарегистрированы?
+      </p>
+      <p>
+        <button class="btn-submit" @click="routeToRegistration">Регистрация</button>
+      </p>
     </form>
   </div>
 </template>
@@ -42,6 +48,9 @@ export default {
         this.errorMessage = response.data.message;
         this.invalidCredentials = true;
       }
+    },
+    routeToRegistration(){
+      this.$router.push({path: '/registration', replace: true});
     }
   }
 }
