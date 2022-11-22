@@ -14,6 +14,12 @@ async function login(username, password) {
         (resp) => {
             let user = resp.data;
             localStorage.setItem('user', JSON.stringify(user));
+            HTTP.get('api/users/user-name/'+ user.username, getHeaders()).then(
+                (resp) => {
+                    let profile = resp.data;
+                    localStorage.setItem('profile', JSON.stringify(profile));
+                }
+            )
             return resp;
         }
     ).catch(error => {
@@ -23,5 +29,6 @@ async function login(username, password) {
 }
 
 function logout(){
+    localStorage.removeItem('user');
     localStorage.removeItem('user');
 }

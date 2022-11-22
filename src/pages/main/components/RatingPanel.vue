@@ -5,7 +5,7 @@
       <UIButton @click="GetUsersCountry">Страна</UIButton>
       <UIButton @click="GetUsersCity">Город</UIButton>
     </div>
-    <div class="profile" v-for="profile in profiles" :key="profile.id" @onclick="ViewProfile(profile.id)">
+    <div class="profile" v-for="profile in profiles" :key="profile.id" @click="viewProfile(profile.id)">
       <div class="img"><img :src=profile.profilePicture /></div>
       <div><strong>Имя:</strong>{{profile.firstName}}</div>
       <div><strong>Фамилия:</strong>{{profile.lastName}}</div>
@@ -13,17 +13,22 @@
       <div><strong>Деньги:</strong>{{profile.money}}</div>
     </div>
   </div>
+  <UserProfileInfo @exit="closeProfileInfo" v-if="isUserClicked" :id=selectedUserId ></UserProfileInfo>
 </template>
 
 <script>
 
 import {UserController} from "@/controller/UserControler";
+import UserProfileInfo from "@/pages/main/components/modals/UserProfileInfo";
 
 export default {
   name: "RatingPanel",
+  components: {UserProfileInfo},
   data() {
     return {
-      profiles: []
+      profiles: [],
+      selectedUserId: null,
+      isUserClicked: false
     }
   },
   methods: {
@@ -33,6 +38,14 @@ export default {
             console.log(resp);
             this.profiles = resp.data;
           });
+    },
+    viewProfile(id) {
+      this.selectedUserId = id;
+      this.isUserClicked = true;
+    },
+    closeProfileInfo() {
+      this.selectedUserId = null;
+      this.isUserClicked = false;
     }
   }
 }
