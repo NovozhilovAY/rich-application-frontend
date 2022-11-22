@@ -5,7 +5,7 @@
       <UIButton @click="GetUsersCountry">Страна</UIButton>
       <UIButton @click="GetUsersCity">Город</UIButton>
     </div>
-    <div class="profile" v-for="(profile, index) in profiles" :key="profile.id" @onclick="ViewProfile(profile.id)">
+    <div class="profile" v-for="(profile, index) in profiles" :key="profile.id" @click="viewProfile(profile.id)">
       <div class="profile-info">
         <img class="avatar-profile" :src=profile.profilePicture />
         <div class="centr-info">
