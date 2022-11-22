@@ -1,14 +1,14 @@
 <template>
-  <h1>Main page</h1>
-  <button @click="logout">Logout</button>
+  <MainHeader/>
 </template>
 
 <script>
 import {LoginController} from "@/controller/LoginController";
+import MainHeader from "@/pages/main/components/MainHeader";
 
 export default {
   name: "MainPage",
-
+  components: {MainHeader},
   methods:{
     logout(){
       LoginController.logout()
