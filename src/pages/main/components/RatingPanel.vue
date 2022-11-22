@@ -17,19 +17,23 @@
       </div>
     </div>
   </div>
+  <UserProfileInfo @exit="closeProfileInfo" v-if="isUserClicked" :id=selectedUserId ></UserProfileInfo>
 </template>
 
 <script>
 
 import {UserController} from "@/controller/UserControler";
+import UserProfileInfo from "@/pages/main/components/modals/UserProfileInfo";
 import UIButton from "@/UI/UIButton";
 
 export default {
   name: "RatingPanel",
-  components: {UIButton},
+  components: {UIButton, UserProfileInfo},
   data() {
     return {
-      profiles: []
+      profiles: [],
+      selectedUserId: null,
+      isUserClicked: false
     }
   },
   methods: {
@@ -55,6 +59,14 @@ export default {
             console.log(resp);
             this.profiles = resp.data;
           });
+      },
+    viewProfile(id) {
+      this.selectedUserId = id;
+      this.isUserClicked = true;
+    },
+    closeProfileInfo() {
+      this.selectedUserId = null;
+      this.isUserClicked = false;
     }
   }
 }

@@ -1,6 +1,8 @@
 <template>
   <div class="header">
     <div class="left"><p class="title">Fobres</p></div>
+    <div class="left"><button class="exit-btn" @click="this.$emit('selectRating')">рейтинг</button></div>
+    <div class="left"><button class="exit-btn" @click="this.$emit('selectProfile')">мой профиль</button></div>
     <div class="right"><button @click="logout()" class="exit-btn">выход</button></div>
   </div>
 </template>
