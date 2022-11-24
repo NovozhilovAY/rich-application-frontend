@@ -1,8 +1,10 @@
 <template>
-  <MainHeader @selectRating="this.selectedMenuItem = 'rating'"
-              @selectProfile="this.selectedMenuItem = 'profile'"/>
-  <RatingPanel v-if="selectedMenuItem === 'rating'"/>
-  <ProfilePanel v-if="selectedMenuItem === 'profile'"/>
+  <div class="main-page">
+    <MainHeader @selectRating="this.selectedMenuItem = 'rating'"
+                @selectProfile="this.selectedMenuItem = 'profile'"/>
+    <RatingPanel v-if="selectedMenuItem === 'rating'"/>
+    <ProfilePanel v-if="selectedMenuItem === 'profile'"/>
+  </div>
 </template>
 
 <script>
@@ -29,5 +31,9 @@ export default {
 </script>
 
 <style scoped>
-
+.main-page {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(89, 89, 89);
+}
 </style>
