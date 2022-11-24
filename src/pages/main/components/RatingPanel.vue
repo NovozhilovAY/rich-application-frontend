@@ -104,7 +104,6 @@ export default {
   color: white;
   font-family: Arial,serif;
   font-size: 1.4rem;
-
 }
 
 .profile-info {
