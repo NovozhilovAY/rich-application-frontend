@@ -138,6 +138,8 @@ export default {
 .picture {
   width: 95%;
   border-radius: 100%;
+  border: black;
+  border-style: solid;
 }
 
 .avatar-redacting {
@@ -211,6 +213,10 @@ export default {
   align-items: flex-start;
 }
 
+.prodile-description::-webkit-input-placeholder { /* WebKit browsers */
+  color: black;
+}
+
 .input-status {
   margin-left: auto;
   margin-right: auto;
@@ -220,6 +226,10 @@ export default {
   resize: none;
   font-family: Arial,serif;
   font-size: 1.5rem;
+}
+
+.input-status::-webkit-input-placeholder { /* WebKit browsers */
+  color: black;
 }
 
 .input-status::-webkit-scrollbar {

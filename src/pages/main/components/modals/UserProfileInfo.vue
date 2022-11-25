@@ -11,7 +11,7 @@
         <input class="input-read" type="text" v-bind:placeholder="user.lastName" required="" readonly>
         <input class="input-read" type="text" v-bind:placeholder="user.country" required="" readonly>
         <input class="input-read" type="text" v-bind:placeholder="user.city" required="" readonly>
-        <input class="input-read" type="text" v-bind:placeholder="user.money" required="" readonly>
+        <input class="input-read" type="text" v-bind:placeholder="user.money + ' coins'" required="" readonly>
       </div>
     </div>
     <div class="profile-rating">
