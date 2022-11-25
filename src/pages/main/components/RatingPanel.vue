@@ -1,20 +1,22 @@
 <template>
   <div class="main-container">
     <div class="btn-group">
-      <UIButton @click="GetUsers">Мир</UIButton>
-      <UIButton @click="GetUsersCountry">Страна</UIButton>
-      <UIButton @click="GetUsersCity">Город</UIButton>
+      <UIButton class="btn-template" @click="GetUsers">World</UIButton>
+      <UIButton class="btn-template" @click="GetUsersCountry">Country</UIButton>
+      <UIButton class="btn-template" @click="GetUsersCity">City</UIButton>
     </div>
+    <div class="profiles">
     <div class="profile" v-for="(profile, index) in profiles" :key="profile.id" @click="viewProfile(profile.id)">
       <div class="profile-info">
+        <div class="num-rating"><strong>#</strong>{{index + 1}}</div>
         <img class="avatar-profile" :src=profile.profilePicture />
         <div class="centr-info">
-          <div><strong>Имя:</strong>{{profile.lastName}} {{profile.firstName}}</div>
-          <div><strong>Страна:</strong>{{profile.country}}</div>
-          <div><strong>Деньги:</strong>{{profile.money}}</div>
+          <div class="fi-country">{{profile.lastName}} {{profile.firstName}}  |  {{profile.country}}</div>
+          <div class="status">{{profile.status}}</div>
         </div>
-        <div class="num-rating"><strong>№</strong>{{index + 1}}</div>
+        <div class="money-profile">{{profile.money}} coins</div>
       </div>
+    </div>
     </div>
   </div>
   <UserProfileInfo @exit="closeProfileInfo" v-if="isUserClicked" :id=selectedUserId ></UserProfileInfo>
@@ -79,13 +81,29 @@ export default {
   box-sizing: border-box;
 }
 
+.main-container {
+  background-color: rgb(28, 28, 28);
+  width: 70%;
+  height: 70%;
+  padding: 0px 0px 1px 0px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profiles {
+  width: 100%;
+  height: 88%;
+  overflow: auto;
+}
+
 .profile {
   padding: 15px;
-  border: 2px solid teal;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin: 20px 80px;
+  background-color: rgb(54, 53, 53);
+  color: white;
+  font-family: Arial,serif;
+  font-size: 1.4rem;
 }
 
 .profile-info {
@@ -93,32 +111,58 @@ export default {
 }
 
 .avatar-profile {
-  width: 65px;
+  width: 75px;
   margin-top: auto;
   margin-bottom: auto;
-  margin-right: auto;
+  margin-left: 20px;
   display: inline;
+  float: left;
+  border-radius: 100px;
 }
 
 .centr-info {
   display: inline;
-  margin: auto;
+  width: 50%;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 60px;
+  margin-right: auto;
+  float: left;
+}
+
+.fi-country {
+  float: left;
+  margin-bottom: 15px;
+}
+
+.status {
+  float: left;
+  text-align: left;
 }
 
 .num-rating {
-  margin-left: auto;
+  margin-right: 35px;
+  margin-left: 35px;
   margin-top: auto;
   margin-bottom: auto;
   display: inline;
   top: 50%;
+  font-size: 1.7rem;
+}
+
+.money-profile {
+  width: 200px;
+  margin-top: auto;
+  margin-bottom: auto;
+  float: right;
 }
 
 .btn-group button {
-  background-color: #4CAF50; /* Green background */
-  border: 1px solid green; /* Green border */
+  background-color: rgb(39, 39, 39);
+  font-size: 3.5rem;
   color: white; /* White text */
-  padding: 10px 24px; /* Some padding */
-  margin-top: 15px;
+  display: inline;
+  justify-content: space-around;
   cursor: pointer; /* Pointer/hand icon */
 }
 
@@ -133,8 +177,17 @@ export default {
   display: table;
 }
 
-/* Add a background color on hover */
 .btn-group button:hover {
-  background-color: #3e8e41;
+  background-color: rgb(28, 28, 28);
 }
+
+.btn-template {
+  width: 33.3333333333333%;
+}
+
+.btn-template:focus {
+  outline: none;
+  background-color: rgb(28, 28, 28);
+}
+
 </style>

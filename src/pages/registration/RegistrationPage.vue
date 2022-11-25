@@ -4,22 +4,22 @@
       <h2 class="form-signin-heading">Registration</h2>
       <p v-if="invalidCredentials" class="err-field">{{this.errorMessage}}</p>
       <p>
-        <input v-model="login" type="text" id="login" name="login" class="form-control" placeholder="Login" required="" autofocus="">
+        <input class="form-control" v-model="login" type="text" id="login" name="login" placeholder="Login" required="" autofocus="">
       </p>
       <p>
-        <input v-model="password" type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+        <input class="form-control" v-model="password" type="password" id="password" name="password" placeholder="Password" required="">
       </p>
       <p>
-        <input v-model="firstname" type="text" id="firstname" name="firstname" class="form-control" placeholder="First name" required="">
+        <input class="form-control" v-model="firstname" type="text" id="firstname" name="firstname" placeholder="First name" required="">
       </p>
       <p>
-        <input v-model="lastname" type="text" id="lastname" name="lastname" class="form-control" placeholder="Last name" required="">
+        <input class="form-control" v-model="lastname" type="text" id="lastname" name="lastname" placeholder="Last name" required="">
       </p>
       <p>
-        <input v-model="country" type="text" id="country" name="country" class="form-control" placeholder="Country" required="">
+        <input class="form-control" v-model="country" type="text" id="country" name="country" placeholder="Country" required="">
       </p>
       <p>
-        <input v-model="city" type="text" id="city" name="city" class="form-control" placeholder="City" required="">
+        <input class="form-control" v-model="city" type="text" id="city" name="city" placeholder="City" required="">
       </p>
       <p>
         <button class="btn-submit" type="submit">Registration</button>
@@ -75,7 +75,9 @@ export default {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  background-color: #e5e5e5;
+  background-image: url("/src/assets/BackGround.png");
+  background-position: center center;
+  background-size: cover;
   margin-right: auto;
   margin-left: auto;
   height: 100%;
@@ -84,8 +86,15 @@ export default {
 
 .form-signin{
   max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
+  padding: 10px 16% 10px;
+  margin: 7% auto;
+  border: 2px solid #000000;
+  background: rgba(89,89,89, 0.3);
+}
+
+.form-signin-heading {
+  color: black;
+  font-family: Arial;
 }
 
 .form-control{
@@ -94,15 +103,15 @@ export default {
   padding: .5rem .75rem;
   font-size: 1.10rem;
   line-height: 2;
-  color: #495057;
-  background-color: #fff;
+  color: #000000;
+  background-color: rgb(183, 183, 183);
   border: 1px solid rgba(0,0,0,.15);
   border-radius: .25rem;
-
+  opacity: 1;
 }
 
 .btn-submit{
-  width: 100%;
+  width: 40%;
   margin-left: auto;
   margin-right: auto;
   padding: .5rem .75rem;
@@ -110,13 +119,11 @@ export default {
   border-width: 1px;
   border-radius: .25rem;
   font-size: 1.15rem;
-  background-color: rgb(54,175,89);
-  border-color: rgb(54,175,89);
-  color: white;
+  color: black;
 }
 
 .btn-submit:hover{
-  background-color: rgb(54,150,89);
+  background-color: rgb(152, 152, 152);
 }
 
 .err-field{
@@ -125,7 +132,7 @@ export default {
   padding: .5rem .75rem;
   font-size: 1.25rem;
   color: white;
-  background-color: red;
+  background-color: #bb0000;
   border: 1px solid rgba(0,0,0,.15);
   border-radius: .25rem;
 }

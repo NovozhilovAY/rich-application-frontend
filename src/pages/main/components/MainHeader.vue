@@ -1,17 +1,24 @@
 <template>
   <div class="header">
-    <div class="left"><p class="title">Fobres</p></div>
-    <div class="left"><button class="exit-btn" @click="this.$emit('selectRating')">рейтинг</button></div>
-    <div class="left"><button class="exit-btn" @click="this.$emit('selectProfile')">мой профиль</button></div>
-    <div class="right"><button @click="logout()" class="exit-btn">выход</button></div>
+    <div class="logotype">
+      <img src="@/assets/logo-fobres.png" class="logo-fobres">
+      <img src="@/assets/text-fobres.png" class="text-fobres"/>
+    </div>
+    <div class="btn-head">
+      <UIButton class="btn-exit" @click="logout()"></UIButton>
+      <UIButton class="btn-profile" @click="this.$emit('selectProfile')"></UIButton>
+      <UIButton class="btn-rating" @click="this.$emit('selectRating')"></UIButton>
+    </div>
   </div>
 </template>
 
 <script>
 import {LoginController} from "@/controller/LoginController";
+import UIButton from "@/UI/UIButton";
 
 export default {
   name: "MainHeader",
+  components: {UIButton},
   methods:{
     logout(){
       LoginController.logout();
@@ -23,56 +30,73 @@ export default {
 
 <style scoped>
 .header{
-  display: flex;
-  height: 60px;
+  height: 130px;
   width: auto;
-  background-color: white;
+  background: rgb(39,39,39);
   margin: 0px;
   box-sizing: border-box;
   border-bottom-style: solid;
   border-width: 1px;
 }
 
-.title{
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  font-size: 25px;
-  font-weight: bolder;
-  margin-left: 3%;
+.logotype {
+  float: left;
 }
 
-.exit-btn{
-  background: #ffffff;
-  border: 1px solid #000000;
-  border-radius: 3px;
-  font-size: 20px;
+.logo-fobres {
+  height: 130px;
+  width: 130px;
+  display: inline;
 }
 
-.exit-btn:hover{
-  background-color: #e0e0e0;
+.text-fobres {
+  height: 90px;
+  width: 250px;
+  display: inline;
+  margin-bottom: 10px;
 }
 
-.login-label{
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  font-size: 20px;
+.btn-head button {
+  border: none;
+  float: right;
+  margin-top: 28px;
+
 }
 
-.center, .right, .left {
-  display: flex;
-  align-items: center;
-  height: 100%;
+btn-head button:hover {
+  background-color: #3e8e41;
 }
 
-.center{
-  width: 20%;
-  justify-content: right;
+.btn-rating {
+  display: inline;
+  margin-right: 45px;
+  margin-left: auto;
+  background-image: url("/src/assets/rating.png");
+  background-position: center center;
+  background-size: cover;
+  height: 80px;
+  width: 80px;
 }
 
-.left{
-  width: 90%;
+.btn-profile {
+  display: inline;
+  margin-right: 45px;
+  background-image: url("/src/assets/profile.png");
+  background-position: center center;
+  background-size: cover;
+  height: 60px;
+  width: 60px;
 }
 
-.right{
-  width: 10%;
-  justify-content: center;
+.btn-exit {
+  display: inline;
+  margin-right: 45px;
+
+  background-image: url("/src/assets/exit.png");
+  background-position: center center;
+  background-size: cover;
+  height: 70px;
+  width: 70px;
 }
+
 </style>
