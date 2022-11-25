@@ -1,7 +1,6 @@
 <template>
   <div class="header">
     <div class="logotype">
-      <img src="@/assets/logo-fobres.png" class="logo-fobres">
       <img src="@/assets/text-fobres.png" class="text-fobres"/>
     </div>
     <div class="btn-head">
@@ -43,17 +42,12 @@ export default {
   float: left;
 }
 
-.logo-fobres {
-  height: 130px;
-  width: 130px;
-  display: inline;
-}
-
 .text-fobres {
   height: 90px;
   width: 250px;
   display: inline;
-  margin-bottom: 10px;
+  margin-top: 10%;
+  margin-left: 5%;
 }
 
 .btn-head button {
@@ -74,8 +68,8 @@ btn-head button:hover {
   background-image: url("/src/assets/rating.png");
   background-position: center center;
   background-size: cover;
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
 }
 
 .btn-profile {
@@ -91,12 +85,11 @@ btn-head button:hover {
 .btn-exit {
   display: inline;
   margin-right: 45px;
-
   background-image: url("/src/assets/exit.png");
   background-position: center center;
   background-size: cover;
-  height: 70px;
-  width: 70px;
+  height: 60px;
+  width: 60px;
 }
 
 </style>

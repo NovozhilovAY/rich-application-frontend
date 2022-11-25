@@ -84,7 +84,7 @@ export default {
 .main-container {
   background-color: rgb(28, 28, 28);
   width: 70%;
-  height: 70%;
+  height: 84%;
   padding: 0px 0px 1px 0px;
   margin-top: 15px;
   margin-left: auto;
@@ -93,8 +93,12 @@ export default {
 
 .profiles {
   width: 100%;
-  height: 88%;
+  height: 90%;
   overflow: auto;
+}
+
+.profiles::-webkit-scrollbar {
+  width: 0;
 }
 
 .profile {
