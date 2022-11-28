@@ -3,7 +3,8 @@ import {getHeaders} from "@/utils/AuthHeader";
 
 export const LoginController = {
     login,
-    logout
+    logout,
+    isUserLoggedIn
 }
 
 async function login(username, password) {
@@ -30,5 +31,9 @@ async function login(username, password) {
 
 function logout(){
     localStorage.removeItem('user');
-    localStorage.removeItem('user');
+    localStorage.removeItem('profile');
+}
+
+function isUserLoggedIn(){
+    return localStorage.getItem('user') !== null;
 }

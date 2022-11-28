@@ -4,8 +4,9 @@
       <img src="@/assets/text-fobres.png" class="text-fobres"/>
     </div>
     <div class="btn-head">
-      <UIButton class="btn-exit" @click="logout()"></UIButton>
-      <UIButton class="btn-profile" @click="this.$emit('selectProfile')"></UIButton>
+      <UIButton v-if="isUserLoggedIn()" class="btn-exit" @click="logout()"></UIButton>
+      <UIButton v-else class="btn-login" @click="redirectToLoginPage()">Войти</UIButton>
+      <UIButton v-if="isUserLoggedIn()" class="btn-profile" @click="this.$emit('selectProfile')"></UIButton>
       <UIButton class="btn-rating" @click="this.$emit('selectRating')"></UIButton>
     </div>
   </div>
@@ -21,6 +22,15 @@ export default {
   methods:{
     logout(){
       LoginController.logout();
+      this.redirectToLoginPage();
+    },
+    isUserLoggedIn(){
+      let res = LoginController.isUserLoggedIn();
+      console.log("sas");
+      console.log(res);
+      return LoginController.isUserLoggedIn();
+    },
+    redirectToLoginPage(){
       this.$router.push({path: '/login', replace: true});
     }
   }
@@ -90,6 +100,10 @@ btn-head button:hover {
   background-size: cover;
   height: 60px;
   width: 60px;
+}
+
+.btn-login {
+  background-color: white;
 }
 
 </style>

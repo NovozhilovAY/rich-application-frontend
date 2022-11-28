@@ -25,6 +25,7 @@ export default {
       let profile = JSON.parse(localStorage.getItem('profile'));
       ImgController.updateProfilePicture(profile.id, file).then((resp)=>{
         console.log(resp.data);
+        this.exit();
       });
     },
     exit(){

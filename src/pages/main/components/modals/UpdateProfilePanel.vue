@@ -39,7 +39,8 @@ export default {
   methods:{
     updateProfile(){
       UserController.updateUser(this.userToUpdate).then(resp=>{
-        console.log(resp.data)
+        console.log(resp.data);
+        this.exit();
       })
     },
     exit(){

@@ -30,6 +30,7 @@ export default {
       PaymentController.makePayment(payment).then((resp)=>{
         let user = resp.data;
         console.log(user);
+        this.exit();
       })
     }
   }

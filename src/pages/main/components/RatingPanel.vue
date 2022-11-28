@@ -1,9 +1,9 @@
 <template>
   <div class="main-container">
     <div class="btn-group">
-      <UIButton class="btn-template" @click="GetUsers">World</UIButton>
-      <UIButton class="btn-template" @click="GetUsersCountry">Country</UIButton>
-      <UIButton class="btn-template" @click="GetUsersCity">City</UIButton>
+      <UIButton ref="worldBtn" class="btn-template" @click="GetUsers">World</UIButton>
+      <UIButton :disabled="!isUserLoggedIn()" @click="GetUsersCountry">Country</UIButton>
+      <UIButton :disabled="!isUserLoggedIn()" class="btn-template" @click="GetUsersCity">City</UIButton>
     </div>
     <div class="profiles">
     <div class="profile" v-for="(profile, index) in profiles" :key="profile.id" @click="viewProfile(profile.id)">
@@ -27,6 +27,7 @@
 import {UserController} from "@/controller/UserControler";
 import UserProfileInfo from "@/pages/main/components/modals/UserProfileInfo";
 import UIButton from "@/UI/UIButton";
+import {LoginController} from "@/controller/LoginController";
 
 export default {
   name: "RatingPanel",
@@ -37,6 +38,9 @@ export default {
       selectedUserId: null,
       isUserClicked: false
     }
+  },
+  mounted() {
+    this.$refs.worldBtn.$el.click();
   },
   methods: {
     GetUsers() {
@@ -69,6 +73,9 @@ export default {
     closeProfileInfo() {
       this.selectedUserId = null;
       this.isUserClicked = false;
+    },
+    isUserLoggedIn(){
+      return LoginController.isUserLoggedIn();
     }
   }
 }
@@ -192,6 +199,10 @@ export default {
 .btn-template:focus {
   outline: none;
   background-color: rgb(28, 28, 28);
+}
+
+.notActive{
+
 }
 
 </style>
