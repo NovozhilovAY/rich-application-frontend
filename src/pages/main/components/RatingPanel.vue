@@ -1,22 +1,22 @@
 <template>
   <div class="main-container">
     <div class="btn-group">
-      <UIButton class="btn-template" @click="GetUsers">World</UIButton>
-      <UIButton class="btn-template" @click="GetUsersCountry">Country</UIButton>
-      <UIButton class="btn-template" @click="GetUsersCity">City</UIButton>
+      <UIButton class="btn-template" ref="worldBtn" @click="GetUsers">World</UIButton>
+      <UIButton class="btn-template" :disabled="!isUserLoggedIn()" @click="GetUsersCountry">Country</UIButton>
+      <UIButton class="btn-template" :disabled="!isUserLoggedIn()" @click="GetUsersCity">City</UIButton>
     </div>
     <div class="profiles">
-    <div class="profile" v-for="(profile, index) in profiles" :key="profile.id" @click="viewProfile(profile.id)">
-      <div class="profile-info">
-        <div class="num-rating"><strong>#</strong>{{index + 1}}</div>
-        <img class="avatar-profile" :src=profile.profilePicture />
-        <div class="centr-info">
-          <div class="fi-country">{{profile.lastName}} {{profile.firstName}}  |  {{profile.country}}</div>
-          <div class="status">{{profile.status}}</div>
+      <div class="profile" v-for="(profile, index) in profiles" :key="profile.id" @click="viewProfile(profile.id)">
+        <div class="profile-info">
+          <div class="num-rating"><strong>#</strong>{{index + 1}}</div>
+          <img class="avatar-profile" :src=profile.profilePicture />
+          <div class="centr-info">
+            <div class="fi-country">{{profile.lastName}} {{profile.firstName}}  |  {{profile.country}}</div>
+            <div class="status">{{profile.status}}</div>
+          </div>
+          <div class="money-profile">{{profile.money}} coins</div>
         </div>
-        <div class="money-profile">{{profile.money}} coins</div>
       </div>
-    </div>
     </div>
   </div>
   <UserProfileInfo @exit="closeProfileInfo" v-if="isUserClicked" :id=selectedUserId ></UserProfileInfo>
@@ -27,6 +27,7 @@
 import {UserController} from "@/controller/UserControler";
 import UserProfileInfo from "@/pages/main/components/modals/UserProfileInfo";
 import UIButton from "@/UI/UIButton";
+import {LoginController} from "@/controller/LoginController";
 
 export default {
   name: "RatingPanel",
@@ -37,6 +38,9 @@ export default {
       selectedUserId: null,
       isUserClicked: false
     }
+  },
+  mounted() {
+    this.$refs.worldBtn.$el.click();
   },
   methods: {
     GetUsers() {
@@ -69,6 +73,9 @@ export default {
     closeProfileInfo() {
       this.selectedUserId = null;
       this.isUserClicked = false;
+    },
+    isUserLoggedIn(){
+      return LoginController.isUserLoggedIn();
     }
   }
 }
@@ -112,6 +119,8 @@ export default {
 
 .profile-info {
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .avatar-profile {
@@ -125,13 +134,15 @@ export default {
 }
 
 .centr-info {
-  display: inline;
   width: 50%;
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 60px;
   margin-right: auto;
   float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .fi-country {
@@ -140,7 +151,7 @@ export default {
 }
 
 .status {
-  float: left;
+  float: bottom;
   text-align: left;
 }
 
@@ -158,7 +169,7 @@ export default {
   width: 200px;
   margin-top: auto;
   margin-bottom: auto;
-  float: right;
+  margin-left: auto;
 }
 
 .btn-group button {
@@ -192,6 +203,10 @@ export default {
 .btn-template:focus {
   outline: none;
   background-color: rgb(28, 28, 28);
+}
+
+.notActive{
+
 }
 
 </style>

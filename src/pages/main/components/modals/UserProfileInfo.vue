@@ -20,9 +20,7 @@
       <div class="input-read">World #{{user.globalRating}}</div>
       <br>
     </div>
-    <div class="btn-exit">
-      <UIButton @click="exit"></UIButton>
-    </div>
+    <button class="btn-back" @click="exit"><span class="ico-back"></span>Back</button>
     <div class="prodile-description">
       <textarea class="input-status" type="text" v-bind:placeholder="user.status" required="" readonly></textarea>
       <textarea class="input-description" type="text" v-bind:placeholder="user.profileDescription" required="" readonly></textarea>
@@ -33,11 +31,9 @@
 
 <script>
 import {UserController} from "@/controller/UserControler";
-import UIButton from "@/UI/UIButton";
 
 export default {
   name: "UserProfileInfo",
-  components: {UIButton},
   props:['id'],
   data(){
     return{
@@ -64,7 +60,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,6 +91,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  box-shadow: 8px 8px 13px rgba(0,0,0,0.8);
 }
 
 .profile-info {
@@ -107,6 +104,10 @@ export default {
   width: 90%;
   font-family: Arial,serif;
   font-size: 1.5rem;
+}
+
+.input-read::-webkit-input-placeholder { /* WebKit browsers */
+  color: black;
 }
 
 .picture {
@@ -131,19 +132,32 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  box-shadow: 8px 8px 13px rgba(0,0,0,0.8);
 }
 
-.btn-exit {
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 1;
-  margin-left: auto;
-  background-image: url("/src/assets/exit.png");
-  background-position: center center;
+.btn-back {
+  width: 30%;
+  height: 40px;
+  font-family: Arial;
+  font-size: 1.1rem;
+  background-color: rgb(89, 89, 89);
+  border-radius: 5px;
+  color: white;
+  margin-left: 70%;
+  box-shadow: 8px 8px 13px rgba(0,0,0,0.8);
+}
+
+.btn-back:hover {
+  background-color: rgba(89, 89, 89, 0.8);
+}
+
+.ico-back {
+  float: left;
+  background-image: url("/src/assets/back.png");
   background-size: cover;
-  height: 60px;
-  width: 60px;
+  background-position: bottom left;
+  height: 20px;
+  width: 20px;
 }
 
 .prodile-description {
@@ -157,6 +171,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  box-shadow: 8px 8px 13px rgba(0,0,0,0.8);
 }
 
 .input-status {
@@ -168,6 +183,10 @@ export default {
   resize: none;
   font-family: Arial,serif;
   font-size: 1.5rem;
+}
+
+.input-status::-webkit-input-placeholder { /* WebKit browsers */
+  color: black;
 }
 
 .input-status::-webkit-scrollbar {
@@ -183,6 +202,10 @@ export default {
   resize: none;
   font-family: Arial,serif;
   font-size: 1.5rem;
+}
+
+.input-description::-webkit-input-placeholder { /* WebKit browsers */
+  color: black;
 }
 
 .input-description::-webkit-scrollbar {

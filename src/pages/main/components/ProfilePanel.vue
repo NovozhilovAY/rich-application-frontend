@@ -1,17 +1,17 @@
 <template>
   <div class="profile">
     <div class="profile-left-card">
-    <div class="profile-avatar">
-      <img class="picture" :src=user.profilePicture>
-      <button class="avatar-redacting" @click="openUpdatePicturePanel"></button>
-    </div>
-    <div class="profile-info">
-      <input class="input-read" type="text" v-bind:placeholder="user.firstName" required="" readonly>
-      <input class="input-read" type="text" v-bind:placeholder="user.lastName" required="" readonly>
-      <input class="input-read" type="text" v-bind:placeholder="user.country" required="" readonly>
-      <input class="input-read" type="text" v-bind:placeholder="user.city" required="" readonly>
-      <button class="edit-profile" @click="openUpdateProfilePanel">Edit profile</button>
-    </div>
+      <div class="profile-avatar">
+        <img class="picture" :src=user.profilePicture>
+        <button class="avatar-redacting" @click="openUpdatePicturePanel"></button>
+      </div>
+      <div class="profile-info">
+        <input class="input-read" type="text" v-bind:placeholder="user.firstName" required="" readonly>
+        <input class="input-read" type="text" v-bind:placeholder="user.lastName" required="" readonly>
+        <input class="input-read" type="text" v-bind:placeholder="user.country" required="" readonly>
+        <input class="input-read" type="text" v-bind:placeholder="user.city" required="" readonly>
+        <button class="edit-profile" @click="openUpdateProfilePanel">Edit profile</button>
+      </div>
     </div>
     <div class="profile-rating">
       <div class="input-read">City #{{user.cityRating}}</div>
@@ -106,12 +106,15 @@ export default {
   grid-row-start: 1;
   grid-row-end: 6;
   height: 96%;
+  width: 100%;
   margin: auto;
   background-color: rgb(89, 89, 89);
   padding: 20px 20px 10px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  position:relative;
+  box-shadow: 8px 8px 13px rgba(0,0,0,0.8);
 }
 
 .profile-info {
@@ -126,6 +129,10 @@ export default {
   font-size: 1.5rem;
 }
 
+.input-read::-webkit-input-placeholder { /* WebKit browsers */
+  color: black;
+}
+
 .edit-profile {
   padding: 10px;
   width: 70%;
@@ -133,24 +140,35 @@ export default {
   border: none;
   background-color: rgb(50, 50, 50);
   color: white;
+  box-shadow: 8px 8px 13px rgba(0,0,0,0.8);
+}
+
+.edit-profile:hover {
+  background-color: rgba(28,28,28,0.5);
 }
 
 .picture {
   width: 95%;
   border-radius: 100%;
-  border: black;
-  border-style: solid;
+  border: solid black;
 }
 
 .avatar-redacting {
+  background-color: rgb(121, 121, 121);
   background-image: url("/src/assets/avatar-redacting.png");
   background-position: center center;
   background-size: cover;
-  height: 35px;
-  width: 35px;
+  height: 50px;
+  width: 50px;
   border-radius: 25px;
   margin-top: 13%;
-  left: 35%;
+  position: absolute;
+  top: 30%;
+  left: 73%;
+}
+
+.avatar-redacting:hover {
+  background-color: rgba(28,28,28,0.5);
 }
 
 .profile-rating {
@@ -158,10 +176,11 @@ export default {
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 3;
-  margin-left: 15%;
+  width: 45%;
+  margin-left: 30%;
   margin-bottom: 20%;
   margin-right: 15%;
-  background-color: rgb(89, 89, 89);
+  background-color: rgb(50, 50, 50);
   padding: 30px;
   color: white;
   vertical-align: auto;
@@ -169,6 +188,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  box-shadow: 8px 8px 13px rgba(0,0,0,0.8);
 }
 
 .profile-money {
@@ -176,28 +196,35 @@ export default {
   grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end: 3;
-  margin-top: 5%;
+  height: 65%;
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 15%;
-  background-color: rgb(89, 89, 89);
+  background-color: rgb(50, 50, 50);
   padding: 20px 20px 10px 20px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  box-shadow: 8px 8px 13px rgba(0,0,0,0.8);
 }
 
 .label-money {
   color: white;
   margin: auto;
-  font-size: 2rem;
+  font-size: 4rem;
 }
 
 .btn-money {
   margin-left: auto;
   margin-top: auto;
   color: white;
+  font-family: Arial,serif;
+  font-size: 1.5rem;
+}
+
+.btn-money:hover {
+  background-color: rgba(28,28,28,0.5);
 }
 
 .prodile-description {
@@ -205,16 +232,15 @@ export default {
   grid-column-end: 5;
   grid-row-start: 3;
   grid-row-end: 6;
-  margin-left: 5%;
+  height: 93%;
+  width: 83%;
+  margin-left: 10%;
   background-color: rgb(89, 89, 89);
   padding: 20px 20px 10px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
-
-.prodile-description::-webkit-input-placeholder { /* WebKit browsers */
-  color: black;
+  box-shadow: 8px 8px 13px rgba(0,0,0,0.8);
 }
 
 .input-status {
@@ -245,6 +271,10 @@ export default {
   resize: none;
   font-family: Arial,serif;
   font-size: 1.5rem;
+}
+
+.input-description::-webkit-input-placeholder { /* WebKit browsers */
+  color: black;
 }
 
 .input-description::-webkit-scrollbar {
