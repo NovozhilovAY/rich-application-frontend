@@ -4,9 +4,10 @@
       <img src="@/assets/text-fobres.png" class="text-fobres"/>
     </div>
     <div class="btn-head">
-      <UIButton v-if="isUserLoggedIn()" class="btn-exit" @click="logout()"></UIButton>
-      <UIButton v-else class="btn-login" @click="redirectToLoginPage()">Войти</UIButton>
-      <UIButton v-if="isUserLoggedIn()" class="btn-profile" @click="this.$emit('selectProfile')"></UIButton>
+
+      <UIButton class="btn-exit" v-if="isUserLoggedIn()" @click="logout()"></UIButton>
+      <UIButton class="btn-login" v-else @click="redirectToLoginPage()"></UIButton>
+      <UIButton class="btn-profile" v-if="isUserLoggedIn()" @click="this.$emit('selectProfile')"></UIButton>
       <UIButton class="btn-rating" @click="this.$emit('selectRating')"></UIButton>
     </div>
   </div>
@@ -33,7 +34,7 @@ export default {
     redirectToLoginPage(){
       this.$router.push({path: '/login', replace: true});
     }
-  }
+  },
 }
 </script>
 
@@ -54,10 +55,10 @@ export default {
 
 .text-fobres {
   height: 90px;
-  width: 250px;
+  width: 340px;
   display: inline;
-  margin-top: 10%;
-  margin-left: 5%;
+  margin-top: 7%;
+  margin-left: 10%;
 }
 
 .btn-head button {
@@ -82,6 +83,10 @@ btn-head button:hover {
   width: 60px;
 }
 
+.btn-rating:hover {
+  background-color: rgba(28,28,28,0.5);
+}
+
 .btn-profile {
   display: inline;
   margin-right: 45px;
@@ -90,6 +95,10 @@ btn-head button:hover {
   background-size: cover;
   height: 60px;
   width: 60px;
+}
+
+.btn-profile:hover {
+  background-color: rgba(28,28,28,0.5);
 }
 
 .btn-exit {
@@ -102,8 +111,23 @@ btn-head button:hover {
   width: 60px;
 }
 
+
+.btn-exit:hover {
+  background-color: rgba(28,28,28,0.5);
+}
+
 .btn-login {
-  background-color: white;
+  display: inline;
+  margin-right: 45px;
+  background-image: url("/src/assets/login.png");
+  background-position: center center;
+  background-size: cover;
+  height: 60px;
+  width: 60px;
+}
+
+.btn-login:hover {
+  background-color: rgba(28,28,28,0.5);
 }
 
 </style>
