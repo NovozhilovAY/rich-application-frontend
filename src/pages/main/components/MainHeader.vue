@@ -4,6 +4,7 @@
       <img src="@/assets/text-fobres.png" class="text-fobres"/>
     </div>
     <div class="btn-head">
+
       <UIButton class="btn-exit" v-if="isUserLoggedIn()" @click="logout()"></UIButton>
       <UIButton class="btn-login" v-else @click="redirectToLoginPage()"></UIButton>
       <UIButton class="btn-profile" v-if="isUserLoggedIn()" @click="this.$emit('selectProfile')"></UIButton>
@@ -109,6 +110,7 @@ btn-head button:hover {
   height: 60px;
   width: 60px;
 }
+
 
 .btn-exit:hover {
   background-color: rgba(28,28,28,0.5);
